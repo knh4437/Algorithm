@@ -12,8 +12,6 @@ public class Main {
         String answer="";
         int one = 1;
         int eight = 8;
-        boolean one_flag = false;
-        boolean eight_flag = false;
         for (int i=0;i<num.length;i++){
             num[i] = Integer.parseInt(st.nextToken());
         }
