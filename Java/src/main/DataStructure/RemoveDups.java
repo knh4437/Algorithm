@@ -44,8 +44,10 @@ class LinkedList_removedups {
         Node n = header;
         while (n != null && n.next!=null) {
             // n!=null : 마지막 노드 값이 중복이여서 삭제할 경우, 다음에 붙을 노드가 없기 때문에 문제가 발생할 수 있어 필요한 조건식
+            // n.next != null : 첫번째 노드부터 마지막 노드까지 탐색
             Node r = n;
             while (r.next!=null) {
+                // n의 다음 노드부터 마지막 노드까지 탐색
                 if (n.data == r.next.data) {
                     r.next = r.next.next;
                 }
