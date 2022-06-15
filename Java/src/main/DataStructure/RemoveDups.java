@@ -1,4 +1,4 @@
-class LinkedList {
+class LinkedList_removedups {
     Node header;
 
     static class Node {
@@ -6,7 +6,7 @@ class LinkedList {
         Node next=null;
     }
 
-    LinkedList() {
+    LinkedList_removedups() {
         header = new Node();
     }
 
@@ -39,15 +39,31 @@ class LinkedList {
         }
         System.out.println(n.data);
     }
+
+    void removeDups() {
+        Node n = header;
+        while (n != null && n.next!=null) {
+            // n!=null : 마지막 노드 값이 중복이여서 삭제할 경우, 다음에 붙을 노드가 없기 때문에 문제가 발생할 수 있어 필요한 조건식
+            Node r = n;
+            while (r.next!=null) {
+                if (n.data == r.next.data) {
+                    r.next = r.next.next;
+                }
+                else {
+                    r = r.next;
+                }
+            }
+            n = n.next;
+        }
+    }
 }
-public class LinkedListNode {
+public class RemoveDups {
     public static void main(String[] args) {
-        LinkedList ll = new LinkedList();
-        ll.append(1);
-        ll.append(2);
+        LinkedList_removedups ll = new LinkedList_removedups();
+        ll.append(3);
         ll.append(3);
         ll.retrieve();
-        ll.delete(1);
+        ll.removeDups();
         ll.retrieve();
     }
 }
