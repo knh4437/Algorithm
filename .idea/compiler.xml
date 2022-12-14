@@ -9,5 +9,8 @@
         <module name="CodingTest" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Algorithm" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
