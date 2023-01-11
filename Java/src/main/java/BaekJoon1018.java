@@ -1,87 +1,74 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class BaekJoon1018 {
 
-    private static int start() {
-        Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
-        int M = sc.nextInt();
-        char[][] blocks = requestInput(N, M);
-        int result = calBlocks(blocks, N, M);
-
-        return result;
-    }
-
-    private static char[][] requestInput(int N, int M) {
-        char[][] blocks = new char[N][M];
-        Scanner sc = new Scanner(System.in);
-        for(int i=0;i<N;i++) {
-            String s = sc.nextLine();
-            blocks[i] = s.toCharArray();
-        }
-        return blocks;
-    }
-
-    private static int calBlocks(char[][] blocks, int N, int M) {
-        int result=-1;
-        int num;
-        for(int i=0;i+7<blocks.length;i++) {
-            for(int j=0;j+7<blocks[i].length;j++) {
-                num = color(copy(blocks, N, M), i, j);
-                if (num < result || result == -1) {
-                    result = num;
-                }
-            }
-        }
-        return result;
-    }
-
-    private static char[][] copy(char[][] blocks, int N, int M) {
-        if (blocks == null)
-            return null;
-        char[][] copyArray = new char[N][M];
-        for (int i=0; i<blocks.length;i++) {
-            copyArray[i] = blocks[i].clone();
-        }
-        return copyArray;
-    }
-
-    private static int color(char[][] blocks, int X, int Y) {
-        int count = 0;
-        char[][] clone = blocks.clone();
-        System.out.println(clone);
-        for (int i=X;i<X+8;i++) {
-            if (i+1 != X+8) {
-                if (i != X + 8 && clone[i][0] == clone[i + 1][0]) {
-                    count++;
-                    if (clone[i][Y] == 'B') {
-                        clone[i + 1][Y] = 'W';
-                    }
-                    else
-                        clone[i + 1][Y] = 'B';
-                }
-            }
-
-            for (int j=Y;j<Y+7;j++) {
-                if (clone[i][j] == clone[i][j+1]) {
-                    if (clone[i][j] == 'B') {
-                        clone[i][j + 1] = 'W';
-                    } else {
-                        clone[i][j + 1] = 'B';
-                    }
-                    count++;
-                }
-            }
-        }
-        System.out.println("count : " + count);
-        return count;
-    }
-
     public static void main(String[] args) {
-        int result = start();
-        System.out.println(result);
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        start(bf);
+    }
+
+    private static void start(BufferedReader bf) {
+        int[] length = getLength(bf);
+        char[][] board = getBoard(length[0], length[1], bf);
+        int result = calculate(board, length[0], length[1]);
+        System.out.printf(String.valueOf(result));
+    }
+
+    private static int[] getLength(BufferedReader bf) {
+        int[] length = new int[2];
+        try {
+            String s = bf.readLine();
+            StringTokenizer st = new StringTokenizer(s);
+            int width = Integer.parseInt(st.nextToken());
+            int height = Integer.parseInt(st.nextToken());
+            length[0] = width;
+            length[1] = height;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return length;
+    }
+
+    private static char[][] getBoard(int width, int height,BufferedReader bf) {
+        char[][] board = new char[width][height];
+        for(int i=0;i<width;i++){
+            try {
+                String s = bf.readLine();
+                board[i] = s.toCharArray();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return board;
+    }
+
+    private static int calculate(char[][] board, int width, int height) {
+        int result = 64;
+        for(int i=0;i<width-7;i++) {
+            for (int j=0;j<height-7;j++) {
+                int r = chess(board, i, j);
+                result = Math.min(result, r);
+            }
+        }
+        return result;
+    }
+
+    // board[n][m] means a starting point of a chess
+    private static int chess(char[][] board, int n, int m) {
+        char[][] cloneBoard = board.clone();
+        int result=0;
+        char start = cloneBoard[n][m];
+        for (int i=n;i<n+8;i++) {
+            for (int j=m;j<m+8;j++) {
+                if (cloneBoard[i][j] != start)
+                    result++;
+                start = (start=='B')?'W':'B';
+            }
+            start = (start=='B')?'W':'B';
+        }
+        result = Math.min(result, 64-result);
+        return result;
     }
 }
