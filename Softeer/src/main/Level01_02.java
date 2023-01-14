@@ -1,4 +1,4 @@
-//  근무 시간 https://softeer.ai/practice/info.do?idx=1&eid=990&sw_prbl_sbms_sn=126402
+// 근무 시간 - https://softeer.ai/practice/info.do?idx=1&eid=990&sw_prbl_sbms_sn=126402
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

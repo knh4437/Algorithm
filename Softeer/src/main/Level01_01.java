@@ -1,4 +1,4 @@
-// A+B https://softeer.ai/practice/info.do?idx=1&eid=362
+// A+B - https://softeer.ai/practice/info.do?idx=1&eid=362
 import java.util.Scanner;
 public class Level01_01 {
     public static void main(String[] args) {

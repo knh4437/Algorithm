@@ -1,4 +1,4 @@
-// 주행거리 비교하기 https://softeer.ai/practice/info.do?idx=1&eid=1016
+// 주행거리 비교하기 - https://softeer.ai/practice/info.do?idx=1&eid=1016
 import java.util.Scanner;
 public class Level01_03 {
     public static void main(String[] args) {
