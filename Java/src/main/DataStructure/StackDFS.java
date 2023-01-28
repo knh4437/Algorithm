@@ -1,5 +1,4 @@
-import java.util.Deque;
-import java.util.LinkedList;
+// 참조 : https://scshim.tistory.com/241
 import java.util.Stack;
 
 public class StackDFS {
@@ -22,11 +21,11 @@ public class StackDFS {
         // 시작 노드 방문 처리
         visited[index] = true;
         System.out.print(index + " ");
-        Deque<Integer> stack = new LinkedList<>();
+        Stack<Integer> stack = new Stack<>();
         stack.push(index);
 
         while (!stack.isEmpty()) {
-            int node = stack.peek();
+            int node = stack.peek();        // peek() : 스택 가장 위 항목 반환. pop() : 스택 가장 위 항목 제거
             boolean hasNearNode = false;    // 방문하지 않은 인접 노드가 있는지 확인
             // 인접한 노드를 방문하지 않았을 경우, 스택에 넣고 방문 처리
             for (int i : graph[node]) {
@@ -39,7 +38,7 @@ public class StackDFS {
                 }
             }
             // 방문하지 않은 인접 노드가 없는 경우 해당 노드 꺼내기
-            if (!hasNearNode)
+            if (hasNearNode == false)
                 stack.pop();
         }
     }
