@@ -7,88 +7,91 @@ import java.util.StringTokenizer;
 public class BaekJoon12891 {
 
     static char[] arr;
-    static int[] checkArr;
+    static int[] countArr;
     static int[] statusArr;
-    static int checkSecret;
+    static int check;
 
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(bf.readLine());
-        int S = Integer.parseInt(st.nextToken());
-        int P = Integer.parseInt(st.nextToken());
-        arr = new char[S];
-        checkArr = new int[4];
+        int length = Integer.parseInt(st.nextToken());
+        int partLength = Integer.parseInt(st.nextToken());
+        arr = new char[length];
+        countArr = new int[4];
+        int result=0;
         arr = bf.readLine().toCharArray();
         st = new StringTokenizer(bf.readLine());
-        checkSecret=0;
-        int result=0;
-        for(int i=0;i<4;i++) {
-            checkArr[i] = Integer.parseInt(st.nextToken());
-            if (checkArr[i] == 0)
-                checkSecret++;
-        }
+        check =0;
         statusArr = new int[4];
-        for (int i=0;i<P;i++) {
+        for (int i=0;i<4;i++) {
+            countArr[i] = Integer.parseInt(st.nextToken());
+            if (countArr[i] == 0)
+                check++;
+        }
+        for (int i=0;i<partLength;i++) {
             Add(arr[i]);
         }
-        if (checkSecret==4)
+        if (check==4)
             result++;
-        for(int i=P;i<S;i++) {
-            int j=i-P;
+        for (int i=partLength;i<length;i++) {
+            int j=i-partLength;
             Add(arr[i]);
             Remove(arr[j]);
-            if (checkSecret==4)
+            if (check==4)
                 result++;
         }
         System.out.println(result);
         bf.close();
+
     }
 
     private static void Add(char c) {
+
         switch (c) {
             case 'A':
                 statusArr[0]++;
-                if (statusArr[0] == checkArr[0])
-                    checkSecret++;
+                if (countArr[0]==statusArr[0])
+                    check++;
                 break;
             case 'C':
                 statusArr[1]++;
-                if (statusArr[1] == checkArr[1])
-                    checkSecret++;
+                if (countArr[1]==statusArr[1])
+                    check++;
                 break;
             case 'G':
                 statusArr[2]++;
-                if (statusArr[2] == checkArr[2])
-                    checkSecret++;
+                if (countArr[2]==statusArr[2])
+                    check++;
                 break;
             case 'T':
                 statusArr[3]++;
-                if (statusArr[3] == checkArr[3])
-                    checkSecret++;
+                if (countArr[3]==statusArr[3])
+                    check++;
                 break;
         }
     }
 
     private static void Remove(char c) {
+
         switch (c) {
             case 'A':
-                if (statusArr[0] == checkArr[0])
-                    checkSecret--;
+                if (countArr[0]==statusArr[0])
+                    check--;
                 statusArr[0]--;
                 break;
             case 'C':
-                if (statusArr[1] == checkArr[1])
-                    checkSecret--;
+                if (countArr[1]==statusArr[1])
+                    check--;
                 statusArr[1]--;
                 break;
             case 'G':
-                if (statusArr[2] == checkArr[2])
-                    checkSecret--;
+                if (countArr[2]==statusArr[2])
+                    check--;
                 statusArr[2]--;
                 break;
             case 'T':
-                if (statusArr[3] == checkArr[3])
-                    checkSecret--;
+                if (countArr[3]==statusArr[3])
+                    check--;
                 statusArr[3]--;
                 break;
         }
