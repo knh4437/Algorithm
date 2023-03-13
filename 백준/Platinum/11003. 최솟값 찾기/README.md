@@ -1,4 +1,4 @@
-# [Unrated] 최솟값 찾기 - 11003 
+# [Platinum] 최솟값 찾기 - 11003 
 
 [문제 링크](https://www.acmicpc.net/problem/11003) 
 
