@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 import java.util.stream.Stream;
 
 // 백준 7576번 : 토마토 - https://www.acmicpc.net/problem/7576
-public class BeakJoon7576 {
+public class BaekJoon7576 {
     int[] dx = { 1, 0, -1, 0 };
     int[] dy = { 0, 1, 0, -1 };
     static int N, M;
@@ -24,10 +24,10 @@ public class BeakJoon7576 {
             String s = bf.readLine();
             graph[i] = Stream.of(s.split(" ")).mapToInt(Integer::parseInt).toArray();
         }
-        BeakJoon7576 beakJoon7576 = new BeakJoon7576();
+        BaekJoon7576 baekJoon7576 = new BaekJoon7576();
         visited = new boolean[M][N];
-        beakJoon7576.findStart(graph);  // 값이 1인 인덱스들을 사전에 큐에 삽입
-        beakJoon7576.bfs(graph);
+        baekJoon7576.findStart(graph);  // 값이 1인 인덱스들을 사전에 큐에 삽입
+        baekJoon7576.bfs(graph);
     }
 
     private void findStart(int[][] graph) {
