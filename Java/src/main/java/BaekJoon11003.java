@@ -4,11 +4,7 @@ import java.util.Deque;
 import java.util.StringTokenizer;
 
 // 백준 11003 - 최솟값 찾기 : https://www.acmicpc.net/problem/11003
-<<<<<<< HEAD:백준/Platinum/11003. 최솟값 찾기/최솟값 찾기.java
-public class Main {
-=======
 public class BaekJoon11003 {
->>>>>>> 32f8ec1c4bce0621d45f77678e5195a44c8715c8:Java/src/main/java/BaekJoon11003.java
 
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
