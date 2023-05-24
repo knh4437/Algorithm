@@ -1,0 +1,31 @@
+-- 코드를 입력하세요
+/* info : 대여 중인 자동차 정보
+    hist : 대여 기록 정보
+    disc : 자동차 종류별, 대여 기간 종류별 할인 정보 
+        - DURATION TYPE : 7 <= x < 30, 30 <= x < 90, 90 <= x */
+/* CAR_TYPE = '세단' OR 'SUV' 
+    START_DATE = 2022-11-01 ~ END_DATE = 2022-11-30 없어야함
+    DURATION_TYPE = '30일 이상'
+    500000 <= (DAILY_FEE * 30 * (100 - DISCOUNT_RATE/100) FEE < 2000000 
+    CAR_ID, CAR_TYPE, FEE*/
+
+# SELECT hist.CAR_ID
+# FROM CAR_RENTAL_COMPANY_RENTAL_HISTORY hist
+# WHERE hist.END_DATE >= '2022-11-01' AND hist.START_DATE <= '2022-11-30%'
+
+SELECT info.CAR_ID, info.CAR_TYPE, ROUND(info.DAILY_FEE * 30 * (100-disc.DISCOUNT_RATE)/100) AS FEE
+FROM CAR_RENTAL_COMPANY_DISCOUNT_PLAN disc
+INNER JOIN CAR_RENTAL_COMPANY_CAR info
+ON disc.CAR_TYPE = info.CAR_TYPE
+WHERE info.CAR_TYPE IN ('세단', 'SUV') AND disc.DURATION_TYPE = '30일 이상'
+AND info.CAR_ID NOT IN (
+    SELECT hist.CAR_ID 
+    FROM CAR_RENTAL_COMPANY_RENTAL_HISTORY hist
+    WHERE hist.END_DATE >= '2022-11-01' AND hist.START_DATE <= '2022-11-30' 
+)
+HAVING FEE >= 500000 AND FEE < 2000000
+ORDER BY FEE DESC, info.CAR_TYPE ASC, info.CAR_ID DESC
+
+# SELECT info.CAR_ID, info.CAR_TYPE, DAILY_FEE
+# FROM CAR_RENTAL_COMPANY_CAR info
+# WHERE info.CAR_TYPE IN ('세단', 'SUV')
