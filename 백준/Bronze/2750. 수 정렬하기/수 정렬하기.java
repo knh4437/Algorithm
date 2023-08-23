@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-// 백준 2750 - 수 정렬하기 : https://www.acmicpc.net/problem/2750
+// 백준 2750 - 수 정렬하기, 삽입 정렬로 구현 : https://www.acmicpc.net/problem/2750
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -10,14 +10,17 @@ public class Main {
             list[i] = sc.nextInt();
         }
 
-        for(int i=0;i<N-1;i++) {
-            for (int j=0;j<N-1-i;j++) {
-                if (list[j] > list[j+1]) {
-                    int temp = list[j];
-                    list[j] = list[j+1];
-                    list[j+1] = temp;
-                }
+        for (int i=1;i<list.length;i++) {
+            int key = list[i];
+            // i = 기준 인덱스
+            int j = i-1;
+            // j = 비교 인덱스
+            while (j>=0 && key < list[j]) {
+                list[j+1] = list[j];
+                // 이전 원소를 한 칸씩 오른쪽으로 미룬다.
+                j--;
             }
+            list[j+1] = key;
         }
 
         for(int i=0;i<N;i++)
