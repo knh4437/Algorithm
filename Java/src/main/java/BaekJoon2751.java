@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.StringTokenizer;
 
 // 백준 2751 - 수 정렬하기 2 : https://www.acmicpc.net/problem/2751
 public class BaekJoon2751 {
