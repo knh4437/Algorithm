@@ -18,6 +18,7 @@ public class BaekJoon11403 {
                 arr[i][j] = Integer.parseInt(st.nextToken());
         }
 
+        // 한 줄씩 갈 수 있는 곳 탐색
         for (int i=0;i<N;i++) {
             dfs(N, i, i);
         }
@@ -29,11 +30,11 @@ public class BaekJoon11403 {
         }
     }
 
-    private static void dfs(int N, int prev, int next) {
+    private static void dfs(int N, int start, int next) {
         for (int i=0;i<N;i++) {
-            if (arr[next][i]==1 && answer[prev][i]==0) {
-                answer[prev][i] = 1;
-                dfs(N, prev, i);
+            if (arr[next][i]==1 && answer[start][i]==0) {
+                answer[start][i] = 1;
+                dfs(N, start, i);
             }
         }
     }
