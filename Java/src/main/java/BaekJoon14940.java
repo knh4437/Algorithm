@@ -37,7 +37,7 @@ public class BaekJoon14940 {
 
         for(int i=0;i<N;i++) {
             for(int j=0;j<M;j++) {
-                if (board[i][j]==1 && (check(i,j, startX,startY)))
+                if (board[i][j]==1 && !visited[i][j])
                     board[i][j] = -1;
                 System.out.print(board[i][j] + " ");
             }
@@ -62,12 +62,5 @@ public class BaekJoon14940 {
                 board[nextX][nextY] += board[n[0]][n[1]];
             }
         }
-    }
-    private static boolean check(int x, int y, int startX, int startY) {
-        for(int i=0;i<4;i++) {
-            if (x == startX + transX[i] && y == startY + transY[i])
-                return false;
-        }
-        return true;
     }
 }
