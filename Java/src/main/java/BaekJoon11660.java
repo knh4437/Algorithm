@@ -5,7 +5,7 @@ import java.util.StringTokenizer;
 
 // 백준 11660번 - 구간 합 구하기 5 : https://www.acmicpc.net/problem/11660
 public class BaekJoon11660 {
-    public static void main(String[] args) throws IOException {
+    private static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(bf.readLine());
         int length = Integer.parseInt(st.nextToken());
