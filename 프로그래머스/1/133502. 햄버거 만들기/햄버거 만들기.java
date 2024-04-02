@@ -15,7 +15,7 @@ class Solution {
                 for(int j=0;j<4;j++) {
                     ingreList.remove(i);
                 }
-                i-=4;
+                i-=3;
                 answer++;
                 continue;
             }
