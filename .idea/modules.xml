@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Algorithm.iml" filepath="$PROJECT_DIR$/.idea/Algorithm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SWEA/SWEA.iml" filepath="$PROJECT_DIR$/SWEA/SWEA.iml" />
       <module fileurl="file://$PROJECT_DIR$/Softeer/Softeer.iml" filepath="$PROJECT_DIR$/Softeer/Softeer.iml" />
     </modules>
   </component>

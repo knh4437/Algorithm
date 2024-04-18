@@ -11,6 +11,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Algorithm" target="11" />
+      <module name="SWEA" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
