@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class SWEA1859 {
     public static void main(String[] args) throws IOException {
-        System.setIn(new FileInputStream("SWEA/static/input.txt"));
+        System.setIn(new FileInputStream("SWEA/static/1859.txt"));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         Scanner sc = new Scanner(System.in);
